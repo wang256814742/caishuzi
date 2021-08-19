@@ -1,0 +1,55 @@
+# coding:utf-8
+
+import random # 导入需要的随机库
+num = random.randrange(1, 100)
+print(num)
+try:
+    guess = int(input('请输入1-100的一个数字, 数字相差在5以内为接近，如果你输入的数字超过100我就让程序自动报错:')) # 输入数字
+    if guess > 100:
+        print('请输入100以内的数')
+        raise Exception
+except:
+    print('会不会输入数字')# 防止程序报错
+
+while bool(guess == num)== False:
+    if guess < num:
+        if 100 - guess < 5 :
+            print('猜小了，非常接近了')
+        else:
+            print('猜小了')
+        guess = int(input('请输入一个比{}大的数:'.format(guess))) # 没有猜对再猜一次
+    elif guess > num:
+        if 100- guess < 5:
+            print('猜大了，非常接近')
+        else:
+            print('猜大了')
+        guess = int(input('请输入一个比{}小的数:'.format(guess))) # 没有猜对再猜一次
+if guess == num:
+    print('恭喜你答对了')
+n = input('还要继续吗:请输入yes or no')
+print(n)
+while True:
+    if n == 'yes' or 'YES':
+        print('我们继续游戏')
+        num = random.randint(0, 100)
+        print(num)
+        guess = int(input('请输入一个0～100的数字，数字相差小于5时为接近：'))
+        while bool(guess == num)== False:
+            if guess < num:
+                if num - guess < 6:
+                    print('猜小了，很接近了')
+                else:
+                    print('猜小了')
+                guess = int(input('请输入一个比{}大的数:'.format(guess)))
+            elif guess > num:
+                if guess - num < 6:
+                    print('猜大了，很接近了')
+                else:
+                    print('猜大了')
+                guess = int(input('请输入一个比{}小的数:'.format(guess)))
+        if guess == num:
+            print('恭喜你猜对了！')
+        n = (input('请问是否继续游戏yes or no :'))
+    elif n == 'no':
+        print('游戏结束')
+        break
